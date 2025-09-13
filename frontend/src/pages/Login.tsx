@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { loginUser } from '../services/authServices';
 import { useAuth } from '../hooks/useAuthHook';
 import { useNavigate } from 'react-router-dom';
+import { AxiosError } from 'axios';
 import logo from '../assets/logo.png';
 import background1 from '../assets/background1.png';
 import background2 from '../assets/background2.png';
@@ -19,9 +20,9 @@ const Login = () => {
       console.log('Connexion réussie !', data);
       login(data.token);
       navigate('/dashboard'); // Redirection après succès
-    } catch (error: any) {
+    } catch (error) {
       console.error('Erreur de connexion:', error);
-      if (error.response && error.response.data) {
+      if (error instanceof AxiosError && error.response && error.response.data) {
         alert("Erreur de connexion : " + JSON.stringify(error.response.data));
       } else {
         alert("Erreur de connexion inconnue");
