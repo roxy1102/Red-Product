@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { FaFileAlt, FaComments, FaUsers, FaEnvelope, FaHotel, FaBuilding, FaBars } from 'react-icons/fa';
-import { useAuth } from '../context/AuthProvider';
+import { useAuth } from '../hooks/useAuthHook';
 import logo from '../assets/logo.png';
 import background1 from '../assets/background1.png';
 import background2 from '../assets/background2.png';
 import HotelList from './HotelList';
 
-// Définition de l'interface pour les statistiques
+
 interface Stat {
   id: number;
   icon: React.ComponentType<{ size: number | string }>;
@@ -25,7 +25,7 @@ const stats: Stat[] = [
   { id: 6, icon: FaBuilding, value: 2, label: 'Entités', description: 'Je ne sais pas quoi mettre', color: 'teal' },
 ];
 
-// Composant pour le contenu du tableau de bord (statistiques)
+
 const DashboardContent = () => (
   <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
     {stats.map(stat => {
@@ -49,7 +49,7 @@ const DashboardContent = () => (
 
 const Dashboard = () => {
   const { logout } = useAuth();
-  const [currentView, setCurrentView] = useState('dashboard'); // 'dashboard' ou 'hotels'
+  const [currentView, setCurrentView] = useState('dashboard'); 
   const [searchQuery, setSearchQuery] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -66,7 +66,7 @@ const Dashboard = () => {
 
   return (
     <div className="flex min-h-screen bg-gray-100">
-      {/* Overlay for mobile */}
+      {/* Sidebar pour mobile */}
       {sidebarOpen && (
         <div
           className="fixed inset-0 z-40 bg-black bg-opacity-50 sm:hidden"
@@ -114,7 +114,7 @@ const Dashboard = () => {
         </div>
       </aside>
 
-      {/* Main content */}
+      {/* Main  */}
       <main className="flex-1 p-6 ml-0 sm:ml-0">
         <header className="flex justify-between items-center mb-6">
           <div className="flex items-center">

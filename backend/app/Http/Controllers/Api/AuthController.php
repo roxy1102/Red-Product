@@ -62,7 +62,7 @@ class AuthController extends Controller
 
    public function showResetForm(Request $request, $token)
    {
-       // Redirect to frontend reset password page with token
+       //Redirection vers la page de réinitialisation du mot de passe du frontend avec le jeton
        return redirect('http://localhost:3000/reset-password?token=' . $token);
    }
 

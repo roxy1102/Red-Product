@@ -77,7 +77,6 @@ class HotelController extends Controller
         $hotelData = $request->except('image');
 
         if ($request->hasFile('image')) {
-            // Supprimer l'ancienne image si elle existe
             if ($hotel->image_url) {
                 Storage::disk('public')->delete(str_replace(url('storage/'), '', $hotel->image_url));
             }

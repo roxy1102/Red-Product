@@ -3,7 +3,7 @@ import { getUserHotels, deleteHotel } from '../services/hotelService';
 import HotelCard from '../components/hotels/HotelCard';
 import HotelForm from '../components/hotels/HotelForm';
 import type { Hotel } from '../interfaces/hotel';
-import { useAuth } from '../context/AuthProvider';
+import { useAuth } from '../hooks/useAuthHook';
 import { useNavigate } from 'react-router-dom';
 
 interface HotelListProps {

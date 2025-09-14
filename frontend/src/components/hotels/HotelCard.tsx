@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Hotel } from '../../interfaces/hotel';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-import { useAuth } from '../../context/AuthProvider';
+import { useAuth } from '../../hooks/useAuthHook';
 
 interface HotelCardProps {
   hotel: Hotel;
@@ -14,7 +14,7 @@ const HotelCard: React.FC<HotelCardProps> = ({ hotel, onEdit, onDelete }) => {
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col max-w-xs">
-      {/* Vérifiez si l'hôtel a une image et affichez-la */}
+      {/* Vérifiez si l'hôtel a une image pour aprés l'afficher */}
       {hotel.image_url && (
         <img
           src={hotel.image_url}
@@ -28,7 +28,7 @@ const HotelCard: React.FC<HotelCardProps> = ({ hotel, onEdit, onDelete }) => {
         <p className="text-gray-700 mt-1">{hotel.prix.toLocaleString('fr-FR')} XOF par nuit</p>
       </div>
 
-      {/* Conteneur des boutons en bas de la carte */}
+      {}
       {isAuthenticated && (
         <div className="flex justify-between p-4 border-t border-gray-200">
           <button
