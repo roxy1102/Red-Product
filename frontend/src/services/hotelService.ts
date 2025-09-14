@@ -9,14 +9,14 @@ export const getHotels = async (): Promise<Hotel[]> => {
   const response = await axios.get(`${API_URL}/hotels`, {
     headers: { Authorization: `Bearer ${getToken()}` },
   });
-  return response.data;
+  return response.data as Hotel[];
 };
 
 export const getUserHotels = async (): Promise<Hotel[]> => {
   const response = await axios.get(`${API_URL}/user/hotels`, {
     headers: { Authorization: `Bearer ${getToken()}` },
   });
-  return response.data;
+  return response.data as Hotel[];
 };
 
 // Ajouter un hôtel
@@ -27,7 +27,7 @@ export const createHotel = async (hotelData: FormData): Promise<Hotel> => {
       'Content-Type': 'multipart/form-data',
     },
   });
-  return response.data;
+  return response.data as Hotel;
 };
 
 // Mettre à jour un hôtel
@@ -39,7 +39,7 @@ export const updateHotel = async (id: number, hotelData: FormData): Promise<Hote
       'Content-Type': 'multipart/form-data',
     },
   });
-  return response.data;
+  return response.data as Hotel;
 };
 
 // Supprimer un hôtel

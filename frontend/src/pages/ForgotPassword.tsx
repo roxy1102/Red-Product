@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { forgotPassword } from "../services/authServices";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
+import type { AxiosError } from "axios";
 import logo from "../assets/logo.png";
 import background1 from "../assets/background1.png";
 import background2 from "../assets/background2.png";
@@ -45,7 +46,7 @@ const ForgotPassword: React.FC = () => {
         style={{ backgroundImage: `url(${background2})` }}
       ></div>
 
-      {/* Overlay couleur douce */}
+      {}
       <div className="absolute inset-0 bg-blue-900/40 mix-blend-multiply"></div>
 
       {/* Contenu */}
@@ -65,7 +66,7 @@ const ForgotPassword: React.FC = () => {
              la façon de modifier votre mot de passe.
           </h3>
 
-          {/* Messages */}
+          {}
           {message && (
             <div className="p-2 mb-4 text-sm text-green-700 bg-green-100 rounded">
               {message}

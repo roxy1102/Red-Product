@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { loginUser } from '../services/authServices';
 import { useAuth } from '../hooks/useAuthHook';
 import { useNavigate } from 'react-router-dom';
-import { AxiosError } from 'axios';
 import logo from '../assets/logo.png';
 import background1 from '../assets/background1.png';
 import background2 from '../assets/background2.png';
@@ -16,17 +15,13 @@ const Login = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const data = await loginUser({ email, password });
+      const data = await loginUser({ email, password }) as { token: string };
       console.log('Connexion réussie !', data);
       login(data.token);
       navigate('/dashboard'); // Redirection après succès
-    } catch (error) {
-      console.error('Erreur de connexion:', error);
-      if (error instanceof AxiosError && error.response && error.response.data) {
-        alert("Erreur de connexion : " + JSON.stringify(error.response.data));
-      } else {
-        alert("Erreur de connexion inconnue");
-      }
+    } catch (err: unknown) {
+      console.error('Erreur de connexion:', err);
+      alert("Erreur de connexion inconnue");
     }
   };
 
@@ -44,7 +39,7 @@ const Login = () => {
         style={{ backgroundImage: `url(${background2})` }}
       ></div>
 
-      {/* Overlay couleur douce */}
+      {}
       <div className="absolute inset-0 bg-blue-900/40 mix-blend-multiply"></div>
 
       {/* Contenu */}

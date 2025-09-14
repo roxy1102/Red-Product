@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { resetPassword } from "../services/authServices";
-import axios, { AxiosError } from "axios";
 import logo from "../assets/logo.png";
 import background1 from "../assets/background1.png";
 import background2 from "../assets/background2.png";
@@ -30,7 +29,7 @@ const ResetPassword: React.FC = () => {
       return;
     }
     try {
-      const response = await resetPassword({ token, email, password, password_confirmation: passwordConfirmation });
+      const response = await resetPassword({ token, email, password, password_confirmation: passwordConfirmation }) as any;
       if (response && typeof response.message === "string") {
         setMessage(response.message);
         setTimeout(() => navigate("/login"), 2000);
@@ -40,12 +39,8 @@ const ResetPassword: React.FC = () => {
       }
       setError("");
     } catch (err: unknown) {
-      if (axios.isAxiosError(err)) {
-        const axiosErr = err as AxiosError<{ message?: string }>;
-        setError(axiosErr.response?.data?.message || "Une erreur est survenue.");
-      } else {
-        setError("Erreur inattendue.");
-      }
+      console.error("Erreur:", err);
+      setError("Erreur inattendue.");
       setMessage("");
     }
   };
@@ -64,7 +59,7 @@ const ResetPassword: React.FC = () => {
         style={{ backgroundImage: `url(${background2})` }}
       ></div>
 
-      {/* Overlay couleur douce */}
+      {}
       <div className="absolute inset-0 bg-blue-900/40 mix-blend-multiply"></div>
 
       {/* Contenu */}
@@ -79,7 +74,7 @@ const ResetPassword: React.FC = () => {
             Réinitialiser le mot de passe
           </h2>
 
-          {/* Messages */}
+          {}
           {message && (
             <div className="p-2 mb-4 text-sm text-green-700 bg-green-100 rounded">
               {message}

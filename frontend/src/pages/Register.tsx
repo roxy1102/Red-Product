@@ -20,16 +20,12 @@ const Register = () => {
         email,
         password,
         password_confirmation: passwordConfirmation,
-      });
+      }) as { token: string };
       console.log('Inscription réussie !', data);
       login(data.token);
-    } catch (error: any) {
-      console.error("Erreur d'inscription:", error);
-      if (error.response && error.response.data) {
-        alert("Erreur d'inscription : " + JSON.stringify(error.response.data));
-      } else {
-        alert("Erreur d'inscription inconnue");
-      }
+    } catch (err: unknown) {
+      console.error("Erreur d'inscription:", err);
+      alert("Erreur d'inscription inconnue");
     }
   };
 
@@ -47,7 +43,7 @@ const Register = () => {
         style={{ backgroundImage: `url(${background2})` }}
       ></div>
 
-      {/* Overlay couleur douce pour harmoniser */}
+      {}
       <div className="absolute inset-0 bg-blue-900/40 mix-blend-multiply"></div>
 
       {/* Contenu */}
