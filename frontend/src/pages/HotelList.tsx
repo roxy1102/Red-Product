@@ -4,6 +4,7 @@ import HotelCard from '../components/hotels/HotelCard';
 import HotelForm from '../components/hotels/HotelForm';
 import type { Hotel } from '../interfaces/hotel';
 import { useAuth } from '../context/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 interface HotelListProps {
   searchQuery: string;
@@ -11,12 +12,12 @@ interface HotelListProps {
 
 const HotelList = ({ searchQuery }: HotelListProps) => {
   const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   const [hotels, setHotels] = useState<Hotel[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showHotelForm, setShowHotelForm] = useState(false);
   const [selectedHotel, setSelectedHotel] = useState<Hotel | null>(null);
-  const [showLoginPrompt, setShowLoginPrompt] = useState(false);
 
   const fetchHotels = async () => {
     setLoading(true);
@@ -43,9 +44,8 @@ const HotelList = ({ searchQuery }: HotelListProps) => {
     if (isAuthenticated) {
       setSelectedHotel(null);
       setShowHotelForm(true);
-      setShowLoginPrompt(false);
     } else {
-      setShowLoginPrompt(true);
+      navigate('/login');
     }
   };
 
@@ -102,12 +102,6 @@ const HotelList = ({ searchQuery }: HotelListProps) => {
           </span>
         </div>
       </div>
-
-      {showLoginPrompt && (
-        <div className="mb-4 p-4 bg-yellow-100 text-yellow-800 rounded">
-          Vous devez vous inscrire ou vous connecter pour ajouter un nouvel hôtel.
-        </div>
-      )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredHotels.length === 0 ? (
