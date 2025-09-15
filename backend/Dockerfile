@@ -21,8 +21,11 @@ WORKDIR /var/www/html
 # Installer les dépendances Laravel
 RUN composer install --no-dev --optimize-autoloader
 
-# Générer la clé si nécessaire
-RUN php artisan key:generate
+# Copier le fichier .env.example vers .env si nécessaire
+RUN cp .env.example .env || true
+
+# Générer la clé si nécessaire (seulement si APP_KEY n'est pas défini)
+RUN php artisan key:generate --force
 
 # Mettre en cache config/routes/views
 RUN php artisan config:cache
