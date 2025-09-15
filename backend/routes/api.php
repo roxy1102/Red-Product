@@ -23,3 +23,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/hotels/{hotel}', [HotelController::class, 'update']);
     Route::delete('/hotels/{hotel}', [HotelController::class, 'destroy']);
 });
+Route::get('/test', function() {
+    return response()->json(['message' => 'Backend OK']);
+});
