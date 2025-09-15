@@ -1,37 +1,28 @@
+# Utiliser l'image PHP officielle avec Apache
 FROM php:8.2-apache
 
-# Set working directory
-WORKDIR /var/www/html
+# Installer les extensions PHP nécessaires pour Laravel
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    libzip-dev \
+    unzip \
+    git \
+    && docker-php-ext-install pdo pdo_pgsql pgsql zip
 
-# Copy application code
+# Installer Composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# Copier le projet dans le container
 COPY . /var/www/html
 
-# Copy start script
-COPY start.sh /var/www/html/start.sh
+# Définir le dossier de travail
+WORKDIR /var/www/html
 
-# Make start script executable
-RUN chmod +x /var/www/html/start.sh
+# Donner les droits sur storage et bootstrap/cache
+RUN chown -R www-data:www-data storage bootstrap/cache
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    zip \
-    unzip \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo pdo_mysql gd
+# Exposer le port
+EXPOSE 8080
 
-# Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader
-
-# Set permissions
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html/storage \
-    && chmod -R 755 /var/www/html/bootstrap/cache
-
-# Start the application
-CMD ["/var/www/html/start.sh"]
+# Commande par défaut
+CMD ["bash", "start.sh"]

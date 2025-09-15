@@ -1,10 +1,8 @@
 services:
   - type: web
     name: red-product-backend
-    runtime: php
-    rootDir: backend
-    buildCommand: './build.sh'
-    startCommand: './start.sh'
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
     envVars:
       - key: APP_ENV
         value: production

@@ -1,9 +1,7 @@
-#!/usr/bin/env bash
-set -o errexit
+#!/bin/bash
+set -e
 
-php artisan migrate --force
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
+cd /var/www/html
 
-php artisan serve --host=0.0.0.0 --port=$PORT
+# Démarrer Apache (inclus dans l'image PHP)
+apache2-foreground
