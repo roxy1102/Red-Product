@@ -13,12 +13,12 @@ services:
       - key: DB_CONNECTION
         value: pgsql
       - key: DB_HOST
-        fromSecret: db_host
+        value: dpg-d33togje5dus73ehhkjg-a
       - key: DB_PORT
         value: 5432
       - key: DB_DATABASE
-        fromSecret: db_name
+        value: red_product_db
       - key: DB_USERNAME
-        fromSecret: db_username
+        value: red_product_db_user
       - key: DB_PASSWORD
-        fromSecret: db_password
+        value: SDwewxuvvC1C3CBkvqY9bjhsj8NDXcnj
