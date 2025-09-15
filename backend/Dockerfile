@@ -18,6 +18,17 @@ COPY . /var/www/html
 # Définir le dossier de travail
 WORKDIR /var/www/html
 
+# Installer les dépendances Laravel
+RUN composer install --no-dev --optimize-autoloader
+
+# Générer la clé si nécessaire
+RUN php artisan key:generate
+
+# Mettre en cache config/routes/views
+RUN php artisan config:cache
+RUN php artisan route:cache
+RUN php artisan view:cache
+
 # Donner les droits sur storage et bootstrap/cache
 RUN chown -R www-data:www-data storage bootstrap/cache
 
