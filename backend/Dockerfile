@@ -33,16 +33,22 @@ RUN composer install --no-dev --optimize-autoloader
 # Copier le fichier .env.example vers .env si nécessaire
 RUN cp .env.example .env || true
 
+# Créer la base de données SQLite si elle n'existe pas
+RUN touch database/database.sqlite
+
 # Générer la clé si nécessaire (seulement si APP_KEY n'est pas défini)
 RUN php artisan key:generate --force
+
+# Exécuter les migrations
+RUN php artisan migrate --force
 
 # Mettre en cache config/routes/views
 RUN php artisan config:cache
 RUN php artisan route:cache
 RUN php artisan view:cache
 
-# Donner les droits sur storage et bootstrap/cache
-RUN chown -R www-data:www-data storage bootstrap/cache
+# Donner les droits sur storage, bootstrap/cache et database
+RUN chown -R www-data:www-data storage bootstrap/cache database
 
 # Exposer le port
 EXPOSE 8080
