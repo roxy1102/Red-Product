@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: red-product-backend
+    runtime: php
+    buildCommand: composer install --no-dev --optimize-autoloader && php artisan key:generate
+    startCommand: vendor/bin/heroku-php-apache2 public/
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_KEY
+        generateValue: true
+      - key: DB_CONNECTION
+        value: mysql
+      - key: DB_HOST
+        fromSecret: db_host
+      - key: DB_PORT
+        value: 3306
+      - key: DB_DATABASE
+        fromSecret: db_name
+      - key: DB_USERNAME
+        fromSecret: db_username
+      - key: DB_PASSWORD
+        fromSecret: db_password
+    rootDir: backend
