@@ -7,5 +7,4 @@ APP_KEY = "base64:xxxxx"   # tu peux laisser vide, Railway utilisera .env
 APP_DEBUG = "false"
 
 [start]
-[service]
-start = "php -S 0.0.0.0:$PORT -t public"
+command = "bash start.sh"
