@@ -1,1 +1,1 @@
-web: apache2ctl -D FOREGROUND
+web: php -S 0.0.0.0:$PORT -t public
