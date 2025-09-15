@@ -1,6 +1,6 @@
-// src/hooks/useAuthHook.ts
+
 import { useContext } from "react";
-import { AuthContext } from "./useAuth.tsx"; // Import the context from the other file
+import { AuthContext } from "./useAuth.tsx"; 
 
 export const useAuth = () => {
   const context = useContext(AuthContext);

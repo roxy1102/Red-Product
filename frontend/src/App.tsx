@@ -12,7 +12,7 @@ function App() {
     <Router>
       <AuthProvider>
         <Routes>
-          {/* Public Routes */}
+          {}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/ForgotPassword" element={<ForgotPassword />} />

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const { isAuthenticated, logout} = useAuth();
   return (
-    // Header avec options de connexion/déconnexion
     <header className="p-4 bg-gray-800 text-white flex flex-col sm:flex-row justify-between items-center">
       <Link to="/" className="text-xl font-bold mb-2 sm:mb-0">Mon Hôtel</Link>
       <nav className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">

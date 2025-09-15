@@ -58,5 +58,5 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-// Export AuthContext so the hook can use it in the new file
+
 export { AuthContext };

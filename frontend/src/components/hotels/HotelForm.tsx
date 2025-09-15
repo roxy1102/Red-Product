@@ -30,7 +30,7 @@ const HotelForm: React.FC<HotelFormProps> = ({ onHotelSubmitted, onClose, hotel 
         address: hotel.address,
         prix: hotel.prix,
       });
-      // S'assurer de réinitialiser l'image lors de la modification
+
       setImageFile(null);
       setImagePreviewUrl(hotel.image_url || null);
     } else {
