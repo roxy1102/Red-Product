@@ -19,6 +19,8 @@ return [
 
 'allowed_origins' => [
     'http://localhost:5173',           // pour le dev local
+    'http://127.0.0.1:5173',           // pour le dev local avec IP
+    'http://127.0.0.1:8000',           // pour le backend local
     'https://red-product-z4oq.vercel.app/login'  // ton frontend déployé
 ],
 
