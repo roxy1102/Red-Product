@@ -1,2 +1,5 @@
-[service]
-start = "php -S 0.0.0.0:$PORT -t public"
+[build]
+builder = "nixpacks"
+
+[start]
+command = "bash start.sh"
