@@ -22,6 +22,7 @@ return [
     'allowed_origins' => [
         'http://localhost:5173',
         'https://red-product-z4oq.vercel.app',
+        'https://red-product-lrwz.vercel.app',
     ],
 
     'allowed_origins_patterns' => [
