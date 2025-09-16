@@ -17,12 +17,14 @@ return [
 
    'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
-'allowed_origins' => [
-      'http://localhost:3000',      // pour le backend local
+   'allowed_methods' => ['*'],
+
+   'allowed_origins' => [
+      'http://localhost:5173',      // pour le backend local
     'https://red-product-z4oq.vercel.app'  // ton frontend déployé
 ],
 
-'allowed_methods' => ['*'],
+
 
 'allowed_origins_patterns' => [],
 
@@ -32,7 +34,7 @@ return [
 
 'max_age' => 0,
 
-'supports_credentials' => false,
+'supports_credentials' => true,
 
 
 ];
