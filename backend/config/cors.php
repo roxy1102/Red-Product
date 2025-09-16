@@ -18,8 +18,8 @@ return [
    'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
 'allowed_origins' => [
-      'http://localhost:3000'      // pour le backend local
-    'https://red-product-z4oq.vercel.app/login'  // ton frontend déployé
+      'http://localhost:3000',      // pour le backend local
+    'https://red-product-z4oq.vercel.app'  // ton frontend déployé
 ],
 
 'allowed_methods' => ['*'],
