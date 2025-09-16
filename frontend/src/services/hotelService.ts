@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { Hotel } from '../interfaces/hotel';
 
-const API_URL = (import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000').replace(/\/api$/, '') + '/api';
+const API_URL = (import.meta.env.VITE_API_URL || 'https://attractive-eagerness-backend4.up.railway.app').replace(/\/api$/, '') + '/api';
 
 const getToken = () => localStorage.getItem('authToken');
 

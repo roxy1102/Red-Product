@@ -1,6 +1,7 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-
+import { API_URL } from '../constants';
 
 const AuthContext = createContext<{ isAuthenticated: boolean; login: (token: string) => void; logout: () => Promise<void> } | null>(null);
 
@@ -21,7 +22,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const token = localStorage.getItem('authToken');
     if (token) {
       try {
-        await axios.post('http://127.0.0.1:8000/api/logout', {}, {
+        await axios.post(`${API_URL}/logout`, {}, {
           headers: { Authorization: `Bearer ${token}` }
         });
       } catch (error) {
