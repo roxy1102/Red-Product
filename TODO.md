@@ -1,6 +1,0 @@
-- [x] Analyze Apache error logs: ServerName warning and DirectoryIndex issue
-- [x] Identify root cause: Apache config not set for Laravel document root and ServerName
-- [x] Modify backend/Dockerfile to configure Apache properly
-- [ ] Rebuild the Docker image: Run `docker-compose build` in the docker directory
-- [ ] Restart the containers: Run `docker-compose up` to test the fixes
-- [ ] Verify logs: Check that ServerName warning is gone and 403 errors are resolved
