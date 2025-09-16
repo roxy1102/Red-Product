@@ -1,5 +1,1 @@
-- [x] Update Register.tsx to handle and display validation errors from backend
-  - [x] Add errors state
-  - [x] Parse err.response.data.errors in catch block
-  - [x] Display errors below each input field
-  - [x] Remove generic alert and use specific error messages
+
