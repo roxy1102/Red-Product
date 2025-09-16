@@ -1,0 +1,5 @@
+- [ ] Fix import of ReactNode to type-only import in frontend/src/hooks/useAuth.tsx
+- [ ] Replace empty object type {} with Record<string, never> in getAuthHeader return type
+- [ ] Properly type response.data by casting to { token: string } in login function
+- [ ] Replace explicit 'any' type with 'unknown' in catch block
+- [ ] Remove export of useAuth and default export to comply with fast refresh rules
