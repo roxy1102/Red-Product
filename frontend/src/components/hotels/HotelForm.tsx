@@ -109,20 +109,20 @@ const HotelForm: React.FC<HotelFormProps> = ({ onHotelSubmitted, onClose, hotel 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-gray-700">Nom de l'hôtel</label>
-              <input type="text" name="name" value={formData.name} onChange={handleChange} className="w-full p-2 border rounded" required />
+              <label htmlFor="hotel-name" className="block text-gray-700">Nom de l'hôtel</label>
+              <input id="hotel-name" type="text" name="name" value={formData.name} onChange={handleChange} className="w-full p-2 border rounded" autoComplete="name" required />
             </div>
             <div>
-              <label className="block text-gray-700">Adresse</label>
-              <input type="text" name="address" value={formData.address} onChange={handleChange} className="w-full p-2 border rounded" required />
+              <label htmlFor="hotel-address" className="block text-gray-700">Adresse</label>
+              <input id="hotel-address" type="text" name="address" value={formData.address} onChange={handleChange} className="w-full p-2 border rounded" autoComplete="street-address" required />
             </div>
             <div>
-              <label className="block text-gray-700">Prix par nuit</label>
-              <input type="number" name="prix" value={formData.prix} onChange={handleChange} className="w-full p-2 border rounded" required />
+              <label htmlFor="hotel-price" className="block text-gray-700">Prix par nuit</label>
+              <input id="hotel-price" type="number" name="prix" value={formData.prix} onChange={handleChange} className="w-full p-2 border rounded" autoComplete="price" required />
             </div>
             <div>
-              <label className="block text-gray-700">Description</label>
-              <textarea name="description" value={formData.description} onChange={handleChange} className="w-full p-2 border rounded" required />
+              <label htmlFor="hotel-description" className="block text-gray-700">Description</label>
+              <textarea id="hotel-description" name="description" value={formData.description} onChange={handleChange} className="w-full p-2 border rounded" required />
             </div>
           </div>
 
