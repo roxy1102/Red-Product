@@ -47,7 +47,7 @@ class HotelController extends Controller
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('hotels', 'public');
-            $hotelData['image_url'] = url('storage/' . $imagePath);
+            $hotelData['image_url'] = secure_url('storage/' . $imagePath);
         } else {
             $hotelData['image_url'] = null;
         }
@@ -78,10 +78,10 @@ class HotelController extends Controller
 
         if ($request->hasFile('image')) {
             if ($hotel->image_url) {
-                Storage::disk('public')->delete(str_replace(url('storage/'), '', $hotel->image_url));
+                Storage::disk('public')->delete(str_replace(secure_url('storage/'), '', $hotel->image_url));
             }
             $imagePath = $request->file('image')->store('hotels', 'public');
-            $hotelData['image_url'] = url('storage/' . $imagePath);
+            $hotelData['image_url'] = secure_url('storage/' . $imagePath);
         }
 
         $hotel->update($hotelData);

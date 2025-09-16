@@ -115,7 +115,7 @@ const Dashboard = () => {
       </aside>
 
       {/* Main  */}
-      <main className="flex-1 p-6 ml-0 sm:ml-0">
+      <main className="flex-1 p-6 ml-0 sm:ml-64">
         <header className="flex justify-between items-center mb-6">
           <div className="flex items-center">
             <button

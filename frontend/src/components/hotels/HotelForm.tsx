@@ -96,7 +96,7 @@ const HotelForm: React.FC<HotelFormProps> = ({ onHotelSubmitted, onClose, hotel 
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded-lg shadow-xl w-full max-w-2xl mx-auto relative">
+      <div className="bg-white p-4 sm:p-6 rounded-lg shadow-xl w-full max-w-2xl mx-auto relative">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-500 hover:text-gray-800"
@@ -131,7 +131,7 @@ const HotelForm: React.FC<HotelFormProps> = ({ onHotelSubmitted, onClose, hotel 
             <div className="flex items-center justify-center w-full border-2 border-dashed border-gray-300 rounded-lg p-6 cursor-pointer hover:border-blue-500 transition-colors">
               <label htmlFor="image-upload" className="flex flex-col items-center cursor-pointer">
                 {imagePreviewUrl ? (
-                  <img src={imagePreviewUrl} alt="Aperçu" className="max-h-48 object-cover rounded-lg" />
+                  <img src={imagePreviewUrl} alt="Aperçu" className="max-h-32 sm:max-h-48 object-cover rounded-lg" />
                 ) : (
                   <>
                     <svg className="w-12 h-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -151,18 +151,18 @@ const HotelForm: React.FC<HotelFormProps> = ({ onHotelSubmitted, onClose, hotel 
             </div>
           </div>
 
-          <div className="flex justify-end space-x-4 mt-6">
+          <div className="flex flex-col sm:flex-row justify-end sm:space-x-4 space-y-2 sm:space-y-0 mt-6">
             <button
               type="submit"
               disabled={loading}
-              className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
+              className="px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
             >
               {loading ? 'En cours...' : 'Enregistrer'}
             </button>
             <button
               type="button"
               onClick={onClose}
-              className="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors"
+              className="px-4 sm:px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors"
             >
               Annuler
             </button>
