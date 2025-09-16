@@ -10,10 +10,12 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
+  const [errors, setErrors] = useState<{ [key: string]: string[] }>({});
   const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrors({});
     try {
       const data = await registerUser({
         name,
@@ -23,9 +25,13 @@ const Register = () => {
       }) as { token: string };
       console.log('Inscription réussie !', data);
       login(data.token);
-    } catch (err: unknown) {
-      console.error("Erreur d'inscription:", err);
-      alert("Erreur d'inscription inconnue");
+    } catch (err: any) {
+      if (err.response && err.response.status === 422) {
+        setErrors(err.response.data.errors || {});
+      } else {
+        console.error("Erreur d'inscription:", err);
+        alert("Erreur d'inscription inconnue");
+      }
     }
   };
 
@@ -64,6 +70,9 @@ const Register = () => {
               className="w-full p-1 border rounded"
               required
             />
+            {errors.name && (
+              <p className="text-red-600 text-sm mt-1">{errors.name.join(' ')}</p>
+            )}
           </div>
           <div className="mb-2">
             <label className="block text-gray-700">Email</label>
@@ -74,6 +83,9 @@ const Register = () => {
               className="w-full p-2 border rounded"
               required
             />
+            {errors.email && (
+              <p className="text-red-600 text-sm mt-1">{errors.email.join(' ')}</p>
+            )}
           </div>
           <div className="mb-2">
             <label className="block text-gray-700">Mot de passe</label>
@@ -84,6 +96,9 @@ const Register = () => {
               className="w-full p-2 border rounded"
               required
             />
+            {errors.password && (
+              <p className="text-red-600 text-sm mt-1">{errors.password.join(' ')}</p>
+            )}
           </div>
           <div className="mb-2">
             <label className="block text-gray-700">Confirmer le mot de passe</label>
@@ -94,6 +109,9 @@ const Register = () => {
               className="w-full p-2 border rounded"
               required
             />
+            {errors.password_confirmation && (
+              <p className="text-red-600 text-sm mt-1">{errors.password_confirmation.join(' ')}</p>
+            )}
           </div>
           <div className="mb-4">
             <input type="checkbox" className="mr-2 leading-tight" required />
